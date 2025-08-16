@@ -78,13 +78,13 @@ User Query
 ## 💡 Sample Interactions  
 
 ### Start Query
-![Start Query](images/Screenshot%20start%20query.png)
+![Start Query](Images/Screenshot%20start%20query.png)
 
 ### Generated Response
-![Generated Response](images/Response.png)
+![Generated Response](Images/Response.png)
 
 ### Revision Example
-![Revision Example](images/Screenshot%20revision.png)
+![Revision Example](Images/Screenshot%20revision.png)
 
 ---
 
