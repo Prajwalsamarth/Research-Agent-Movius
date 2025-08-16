@@ -81,7 +81,7 @@ User Query
 ![Start Query](Screenshot%20start%20query.png)
 
 ### Generated Response
-![Generated Response](Response.png)
+![Generated Response](images/Response.png)
 
 ### Revision Example
 ![Revision Example](Screenshot%20revision.png)
