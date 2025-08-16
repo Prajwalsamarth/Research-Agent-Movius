@@ -34,7 +34,7 @@ class ResearchState(TypedDict):
 
 # --- LLM & TOOLS ---
 llm = ChatOpenAI(model="gpt-5-nano", temperature=0)
-# llm2 = ChatOpenAI(model="gpt-5-nano", temperature=0)
+
 
 def decide_new_or_edit(state: ResearchState):
     """
@@ -100,82 +100,9 @@ def search_angles(state: ResearchState):
     # print(state["angles"])
     return [Send("search_one_angle", {"perspective": angle, "question": state["query"], "answer":"", "context":[]}) for angle in state["angles"]]
 
-# def search_one_angle(state: ResearchState):
-#     travily_result = tavily_search.run(state["angle"])
-#     wiki_result = wikipedia_tool.run(state["angle"])
-#     combined_result = f"### {state['angle']}\nTravily: {travily_result}\nWikipedia: {wiki_result}"
-#     return {"search_result": state.get("search_result", []) + [combined_result]}
-# def collect_results(state: dict) -> dict:
-#     # Merge subagent’s context into parent’s context
-#     return {"context": state["context"]}
 
 
 def write_report(state: ResearchState):
-#     prompt = f"""
-#     Your task is to create a short, easily digestible section of a report based on a set of source documents.
-# - Introduction
-# - Sections for each angle: 
-# - Conclusion
-# - Sources
-# Based on these findings:
-# {state['context']}
-            
-# Instructions:
-# 1. Analyze the content of the source documents: 
-# - The name of each source document is at the start of the document, with the <Document tag.
-        
-# 2. Create a report structure using markdown formatting:
-# - Use ## for the section title
-# - Use ### for sub-section headers
-        
-# 3. Write the report following this structure:
-# a. Title (## header)
-# b. Sections for each perspective (### header)
-# c. Conclusion (### header)
-# d. Sources (### header)
-
-# 4. Make your title engaging
-
-# 5. For the "Sections for each perspective" section:
-# - Set up summary with general background / context related to the angle
-# - Give a title to each perspective within the "Sections for each perspective" section
-# - Do not metion Angle 1, Angle 2 etc. Just use the angle name as the section title and then write the section.
-# - Emphasize what is novel, interesting, or surprising about insights gathered.
-# - Create a numbered list of source documents, as you use them
-# - Aim for approximately 500 words maximum
-# - IMPORTANT:Use numbered sources in your report (e.g., [1], [2]) based on information from source documents. 
-# - The list of sources should be present in the Sources section as per the instructions given.
-# - IMPORTANT:These numbers should match the source link in the Sources section.
-        
-# 6. In the Sources section:
-# - Include all sources used in your report
-# - DO not explain the sources. Just add the link or document name.
-# - Always make sure that there is only one numbered list of sources. 
-# - The numbers should be the same as the numbers mentioned in the summary section. 
-# - Provide full links to relevant websites or specific document paths
-# - Separate each source by a newline. Use two spaces at the end of each line to create a newline in Markdown.
-# - It will look like:
-
-# ### Sources
-# [1] Link or Document name
-# [2] Link or Document name
-
-# - Be sure to combine sources. For example this is not correct:
-
-# [3] https://ai.meta.com/blog/meta-llama-3-1/
-# [4] https://ai.meta.com/blog/meta-llama-3-1/
-
-# There should be no redundant sources. It should simply be:
-
-# [3] https://ai.meta.com/blog/meta-llama-3-1/
-
-# - Be concise when listing sources(less than 15 words per source).
-
-# 7. Final review:
-# - Ensure the report follows the required structure
-# - Include no preamble before the title of the report
-# - Check that all guidelines have been followed
-#     """
 
     prompt = f"""
     You are a technical writer creating a report on this overall topic: 
@@ -281,12 +208,6 @@ research_agent = graph.compile(checkpointer=memory)
 #     {"query": "Can you make the introduction shorter and exciting?"},
 #     config=config
 # )
-
-# # Continue
-# # for event in graph.stream({"query": "Impact of microplastics on marine biodiversity"}, thread, stream_mode="values"):
-# #     print("--Node--")
-# #     report = event.get('report', '')
-# #     print(report)
 
 # final_state = research_agent.get_state(config)
 # report = final_state.values.get('report')
