@@ -1,0 +1,11 @@
+# Minimal requirements based on imports in Agent.py, search_tool.py, and test.py
+langgraph
+langchain-core
+langchain-community
+langchain-openai
+openai
+python-dotenv
+pydantic
+rich
+tavily-python
+wikipedia
