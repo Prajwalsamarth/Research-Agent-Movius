@@ -12,10 +12,10 @@ It can:
 
 ## 🚀 Setup Instructions  
 
-### 1. Clone the repo & install dependencies
+### 1. Clone the repo & install dependencies from requirements.txt
 ```bash
 git clone <your-repo-url>
-cd Research-Agent-Movius
+cd Research-Agent-Movius-main
 pip install -r requirements.txt
 ```
 
